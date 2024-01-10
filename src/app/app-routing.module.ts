@@ -2,8 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
-
-import { authGuard } from './auth/auth.guard';
 import { SelectivePreloadingStrategyService } from './selective-preloading-strategy.service';
 import { UploadExcelComponent } from './pages/uploadExcel/uploadExcel.component';
 import { RandomRoundComponent } from './pages/random-round/random-round.component';
@@ -30,13 +28,6 @@ const appRoutes: Routes = [
     component: ListRewardComponent,
     data: { preload: true }
   },
-  {
-    path: 'admin',
-    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule),
-    canMatch: [authGuard]
-  },
-
-
   { path: '**', component: PageNotFoundComponent }
 ];
 

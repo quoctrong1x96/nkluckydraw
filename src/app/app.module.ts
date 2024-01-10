@@ -6,7 +6,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Router } from '@angular/router';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { AuthModule } from './auth/auth.module';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { CommonModule } from '@angular/common';
 import { UploadExcelComponent } from './pages/uploadExcel/uploadExcel.component';
@@ -22,7 +21,6 @@ import { HomeComponent } from './pages/home/home.component';
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
-    AuthModule,
     AppRoutingModule,
     CommonModule, 
     MatSnackBarModule
