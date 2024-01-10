@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/c440d09e-ebce-40ff-8095-108cdb033045/resourceGroups/nklucky_group/providers/Microsoft.Web/sites/nkluckydraw",
+    "appService.deploySubpath": "."
+}
