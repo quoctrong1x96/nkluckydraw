@@ -1,0 +1,56 @@
+<section class="wrapper">
+  <div class="container-fostrap">
+    <div class="content">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-xs-12 col-sm-3" *ngFor="let reward of rewards$ | async"
+            [class.selected]="reward.id === selectedId">
+            <div class="card">
+
+              <div class="card-content">
+                <h4 class="card-title">
+                  <div class="container">
+                    <div class="row justify-content-center">
+                      <div class="col-2 rect-title">{{ reward.totalDrawNumber }}</div>
+                      <div class="col-7 info"> {{ reward.name }}:<br>
+                        <p>{{formatNumber(reward.price)}}đ</p>
+                      </div>
+                    </div>
+                  </div>
+                </h4>
+                <a class="img-card" href="">
+                  <img src="{{ reward.imageUrl }}" />
+                </a>
+                <table *ngIf="checkMemberReward(reward.id)" class="table">
+                  <thead class="thead-dark">
+                    <tr>
+                      <!-- <th scope="col"> Mã số</th> -->
+                      <th scope="col" class="text-center"> Chủ nhân giải thưởng</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let member of getMemebers(reward.id)">
+                      <!-- <td scope="row" >{{member.id}}</td> -->
+                      <td scope="row" class="text-center">{{member.name}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <p *ngIf="!checkMemberReward(reward.id)">Chưa có chủ nhân</p>
+              </div>
+              <div class="card-read-more">
+                <a class="btn btn-link btn-block" (click)="onClickRewards(reward)"
+                  *ngIf="reward.totalDrawNumber - countMemberReward(reward.id) >0">
+                  Vòng quay may mắn (còn {{reward.totalDrawNumber -countMemberReward(reward.id)}} lượt)
+                </a>
+                <a class="btn btn-link btn-block disabled" *ngIf="reward.totalDrawNumber - countMemberReward(reward.id) == 0">
+                  Vòng quay may mắn (còn 0 lượt)
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<button class="btn btn-outline-secondary fixed-bottom m-3" (click)="goBack()">Trở về xem danh sách</button>

@@ -1,0 +1,77 @@
+.custom-container {
+    margin: 0 important;
+    padding: important;
+    height: 100vh;
+    overflow: hidden;
+    /* position: relative; */
+    padding-top: 2rem;
+    /* Đường dẫn đến hình nền */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+h1 {
+    font-size: 56px;
+    text-transform: uppercase;
+    font-family: 'Gambetta', serif;
+    letter-spacing: -3px;
+    transition: 700ms ease;
+    font-variation-settings: "wght" 311;
+    margin-bottom: 0.8rem;
+    color: rgb(0, 140, 255);
+    outline: none;
+    text-align: center;
+}
+
+p {
+    font-size: 1.2em;
+    line-height: 150%;
+    text-align: center;
+    color: MintCream;
+    letter-spacing: .5px;
+}
+
+.content {
+    text-align: center;
+    color: #ffffff;
+    /* Màu chữ */
+}
+
+.logo {
+    max-width: 200px;
+    height: auto;
+    margin-bottom: 20px;
+    margin-top: 60px;
+}
+
+.btn-custom {
+    background-color: aliceblue;
+    font-size: 30px;
+}
+
+.btn-custom:hover {
+    background-color: aqua;
+    color: #fff;
+}
+
+/* .small-images {
+    position: absolute;
+    top: 200%;
+    left: -65%;
+    display: flex;
+  } */
+
+.small-image {
+    width: 320px;
+    height: 200px;
+    border-radius: 5%;
+    object-fit: cover;
+    border: 2px solid #fff;
+    /* Viền trắng */
+    margin-top: 100px;
+    margin-left: 80px;
+    margin-right: 70px;
+    transition: transform 0.3s ease-in-out;
+    background-size: contain;
+}

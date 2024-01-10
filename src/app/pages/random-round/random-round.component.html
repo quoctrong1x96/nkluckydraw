@@ -1,0 +1,24 @@
+<div class="vertical-center">
+<div class="container  text-center">
+
+  <div class="row align-items-center">
+    <div class="col">
+      <button class="btn btn-success" (click)="startRandomizing()" *ngIf="!isStarted">Bắt đầu</button>
+      <h1 *ngIf="isStarted">{{ displayName }} </h1>
+    </div>
+  </div>
+  <br>
+  <br>
+  <br>
+  <div class="row align-items-center">
+    <div class="col">
+      <button class="btn btn-outline-secondary small" (click)="goBack()" *ngIf="!isStarted">Quay lại</button>
+    </div>
+  </div>
+  <div class="row align-items-center">
+    <div class="col">
+      <button (click)="comback()" *ngIf="isEnded">Kết thúc</button>
+    </div>
+  </div>
+</div>
+</div>

@@ -1,0 +1,50 @@
+<div class="container-fluid d-flex justify-content-center align-items-center">
+  <div class="upload-custom">
+    <label for="files" class="btn btn-outline-warning">Tải lên danh sách</label>
+    <input id="files" style="visibility:hidden;" type="file" (change)="onFileChange($event)">
+  </div>
+  <button type="button" class="btn btn-outline-primary" (click)="shuffleData($event)">Trộn danh sách</button>
+</div>
+<div class="text-center">
+  <button type="button" style="width: 100px;" class="btn btn-outline-danger" (click)="goToRewardList()">Chiến <img src="../../../assets/icons/battle.png" alt="My Icon"></button>
+</div>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h6 class="card-subtitle mb-2 text-muted text-center">Danh sách trúng giải</h6>
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col"> STT</th>
+            <th scope="col"> Họ và tên</th>
+            <th scope="col"> Giải thưởng</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of luckyDrawer">
+            <td scope="row">{{ row.id }}</td>
+            <td scope="row">{{ row.name }}</td>
+            <td scope="row">{{ row.reward.name }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col">
+      <h6 class="card-subtitle mb-2 text-muted text-center">Danh sách còn cơ hội</h6>
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th *ngFor="let header of headers" scope="col">{{ header }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of excelData">
+            <td *ngFor="let header of headers" scope="row">{{ row[header] }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+

@@ -1,0 +1,21 @@
+
+  h1 {
+    font-size: 7em;
+    font-weight: 700;
+  }
+
+  button{
+    font-size: 5em;
+    font-weight: 700;
+  }
+
+  .vertical-center {
+    min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+    min-height: 100vh; /* These two lines are counted as one :-)       */
+  
+    display: flex;
+    align-items: center;
+  }
+  .small {
+    font-size: 1em !important;
+  }
