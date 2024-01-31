@@ -18,7 +18,9 @@ export class RandomRoundComponent
     rewardId: number = 0;
     isStarted: boolean = false;
     isEnded: boolean = false;
-    private stopIntervalTimeout: any;
+    randomTimeTo:number = 5; // theo s
+    randomTimeFrom:number = 7;// theo s
+    private stopIntervalTimeout: any; 
     isIncreasingDelay: boolean = false; // Trạng thái hiện tại của quá trình tăng thời gian delay
   
     constructor(public excelDataService: UploadDataService,
@@ -52,7 +54,7 @@ export class RandomRoundComponent
       clearInterval(this.updateInterval);
       this.excelDataService.updateLuckyDrawer(this.luckyId, this.rewardId??0);
       this.isEnded = true;
-    }, Math.floor(Math.random() * 8000) + 20000);
+    }, Math.floor(Math.random() * this.randomTimeFrom) + this.randomTimeTo * 1000);
     }
     comback():void{
       this.location.back();
