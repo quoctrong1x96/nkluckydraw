@@ -1,6 +1,6 @@
-import { UploadDataService } from './../../services/uploadData.service';
-import { RewardService } from '../../services/list-reward.service';
-import { Reward } from '../../services/reward';
+import { UploadDataService } from '../../_services/uploadData.service';
+import { RewardService } from '../../_services/list-reward.service';
+import { Reward } from '../../_models/reward';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Input } from '@angular/core';
@@ -9,10 +9,10 @@ import { Location } from '@angular/common';
 
 
 import { Observable } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { DataSharingService } from '../../services/sharedData.service';
-import { LuckyDrawer } from '../../services/luckyDrawer';
+import { DataSharingService } from '../../_services/sharedData.service';
+import { LuckyDrawer } from '../../_models/luckyDrawer';
 @Component({
   selector: 'list-reward',
   templateUrl: './list-reward.component.html',
@@ -34,17 +34,27 @@ export class ListRewardComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.rewards$ = this.service.getRewards();
+    this.rewards$ = this.service.getAll();
     this.memberReward = this.uploadDataService.getLuckyDrawer();
   }
 
-  countMemberReward(rewardId: number): number {
+  countMemberReward(rewardId: string): number {
     let result = 0;
     result= this.memberReward.filter(element => element.reward.id ===rewardId).length;;
     return result;
   }
+  checkRewardsLength(): Observable<number> {
+    if (this.rewards$) {
+      return this.rewards$.pipe(
+        map(rewards => rewards.length)
+      );
+    } else {
+      // Trả về một observable với giá trị mặc định (ví dụ: 0) nếu rewards$ là undefined.
+      return new Observable<number>(observer => observer.next(0));
+    }
+  }
 
-  checkMemberReward(rewardId: number): boolean {
+  checkMemberReward(rewardId: string): boolean {
     let result = false;
     console.log(this.memberReward);
     this.memberReward.forEach(element => {
@@ -55,7 +65,7 @@ export class ListRewardComponent implements OnInit {
     });
     return result;
   }
-  getMemebers(rewardId: number): LuckyDrawer[] {
+  getMemebers(rewardId: string): LuckyDrawer[] {
     return this.memberReward.filter(element => element.reward.id ===rewardId);
     
   }
@@ -84,5 +94,9 @@ export class ListRewardComponent implements OnInit {
 
   goBack(): void {
     this.location.back();
+  }
+
+  goToManager():void {
+    this.router.navigate(['/manager']);
   }
 }

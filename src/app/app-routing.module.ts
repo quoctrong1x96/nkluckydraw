@@ -7,6 +7,9 @@ import { UploadExcelComponent } from './pages/uploadExcel/uploadExcel.component'
 import { RandomRoundComponent } from './pages/random-round/random-round.component';
 import { ListRewardComponent } from './pages/list-reward/list-reward.component';
 import { HomeComponent } from './pages/home/home.component';
+import { RewardViewListComponent } from './pages/manager/reward-view-list/reward-view-list.component';
+import { ManagerComponent } from './pages/manager/manager.component';
+import { RewardAddEditComponent } from './pages/manager/reward-add-edit/reward-add-edit.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -23,10 +26,19 @@ const appRoutes: Routes = [
     path: 'random-round',
     component: RandomRoundComponent,
     data: { preload: true }
-  }, {
+  }, 
+  {
     path: 'list-reward',
     component: ListRewardComponent,
     data: { preload: true }
+  },
+  {
+    path: 'manager', component: ManagerComponent,
+    children: [
+        { path: '', component: RewardViewListComponent },
+        { path: 'add', component: RewardAddEditComponent },
+        { path: 'edit/:id', component: RewardAddEditComponent }
+    ]
   },
   { path: '**', component: PageNotFoundComponent }
 ];

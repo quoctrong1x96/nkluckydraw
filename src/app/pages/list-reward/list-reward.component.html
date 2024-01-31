@@ -2,17 +2,17 @@
   <div class="container-fostrap">
     <div class="content">
       <div class="container">
-        <div class="row justify-content-center">
+        <!-- *ngIf="rewards$ | async as rewards; else noRewards" -->
+        <div  class="row justify-content-center">
           <div class="col-xs-12 col-sm-3" *ngFor="let reward of rewards$ | async"
-            [class.selected]="reward.id === selectedId">
+            [class.selected]="reward.id === selectedId.toString()">
             <div class="card">
-
               <div class="card-content">
                 <h4 class="card-title">
                   <div class="container">
                     <div class="row justify-content-center">
-                      <div class="col-2 rect-title">{{ reward.totalDrawNumber }}</div>
-                      <div class="col-7 info"> {{ reward.name }}:<br>
+                      <div class="col-3 rect-title">{{ reward.totalDrawNumber }}</div>
+                      <div class="col-9 info"> {{ reward.name }}:<br>
                         <p>{{formatNumber(reward.price)}}đ</p>
                       </div>
                     </div>
@@ -42,15 +42,31 @@
                   *ngIf="reward.totalDrawNumber - countMemberReward(reward.id) >0">
                   Vòng quay may mắn (còn {{reward.totalDrawNumber -countMemberReward(reward.id)}} lượt)
                 </a>
-                <a class="btn btn-link btn-block disabled" *ngIf="reward.totalDrawNumber - countMemberReward(reward.id) == 0">
+                <a class="btn btn-link btn-block disabled"
+                  *ngIf="reward.totalDrawNumber - countMemberReward(reward.id) == 0">
                   Vòng quay may mắn (còn 0 lượt)
                 </a>
               </div>
             </div>
           </div>
         </div>
+        <!-- <ng-template #noRewards>
+          <p>Không có dữ liệu nào được tìm thấy.</p>
+          <button type="button" class="btn btn-outline-info btn-custom" (click)="goToManager()">Quản lý Rewards</button>
+        </ng-template> -->
       </div>
     </div>
   </div>
 </section>
-<button class="btn btn-outline-secondary fixed-bottom m-3" (click)="goBack()">Trở về xem danh sách</button>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4"> <button class="btn btn-outline-secondary btn-block"
+       (click)="goBack()">Trở về xem danh sách Tham gia</button>
+    </div>
+    <div class="col-md-4"> </div>
+    <div class="col-md-4"> <button class="btn btn-outline-secondary btn-block"
+      (click)="goToManager()">Quản lý danh sách Giải thưởng</button>
+   </div>
+  </div>
+
+</div>

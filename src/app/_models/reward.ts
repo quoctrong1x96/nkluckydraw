@@ -1,9 +1,8 @@
 export interface Reward {
-    id: number;
+    id: string;
     name: string;
     imageUrl: string;
     price: number;
     totalDrawNumber: number;
-    drewCount:number;
   }
   

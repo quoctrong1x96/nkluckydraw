@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
@@ -13,8 +13,13 @@ import { RandomRoundComponent } from './pages/random-round/random-round.componen
 import { ListRewardComponent } from './pages/list-reward/list-reward.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { HomeComponent } from './pages/home/home.component';
+import { RewardAddEditComponent } from './pages/manager/reward-add-edit/reward-add-edit.component';
+import { RewardViewListComponent } from './pages/manager/reward-view-list/reward-view-list.component';
+import { ManagerComponent } from './pages/manager/manager.component';
 
-
+// used to create fake backend
+import { fakeBackendProvider } from './_helpers';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
@@ -22,8 +27,11 @@ import { HomeComponent } from './pages/home/home.component';
     BrowserAnimationsModule,
     FormsModule,
     AppRoutingModule,
-    CommonModule, 
-    MatSnackBarModule
+    CommonModule,
+    MatSnackBarModule,
+    ReactiveFormsModule,
+    RouterModule,
+    HttpClientModule,
   ],
   declarations: [
     AppComponent,
@@ -31,9 +39,16 @@ import { HomeComponent } from './pages/home/home.component';
     UploadExcelComponent,
     RandomRoundComponent,
     ListRewardComponent,
-    HomeComponent
+    HomeComponent,
+    RewardAddEditComponent,
+    RewardViewListComponent,
+    ManagerComponent
   ],
-  bootstrap: [ AppComponent ]
+  bootstrap: [AppComponent],
+  providers: [
+    // provider used to create fake backend
+    fakeBackendProvider
+  ],
 })
 export class AppModule {
   // Diagnostic only: inspect router configuration

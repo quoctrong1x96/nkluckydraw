@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import * as XLSX from 'xlsx';
-import {UploadDataService} from '../../services/uploadData.service';
-import { LuckyDrawer } from '../../services/luckyDrawer';
+import {UploadDataService} from '../../_services/uploadData.service';
+import { LuckyDrawer } from '../../_models/luckyDrawer';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({

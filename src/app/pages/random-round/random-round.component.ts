@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { UploadDataService } from '../../services/uploadData.service';
-import { DataSharingService } from '../../services/sharedData.service';
+import { UploadDataService } from '../../_services/uploadData.service';
+import { DataSharingService } from '../../_services/sharedData.service';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 
@@ -15,9 +15,11 @@ export class RandomRoundComponent
     displayName: string = 'Random Round';
     luckyId: number = 0;
     timeDelay: number = 1; // Thời gian delay mặc định
-    rewardId: number = 0;
+    rewardId: string = "0";
     isStarted: boolean = false;
     isEnded: boolean = false;
+    randomTimeFrom: number = 4;
+    randomTimeTo: number = 6;
     private stopIntervalTimeout: any;
     isIncreasingDelay: boolean = false; // Trạng thái hiện tại của quá trình tăng thời gian delay
   
@@ -50,9 +52,9 @@ export class RandomRoundComponent
       // Hẹn giờ để dừng interval sau khoảng 30 giây (30000 milliseconds)
     this.stopIntervalTimeout = setTimeout(() => {
       clearInterval(this.updateInterval);
-      this.excelDataService.updateLuckyDrawer(this.luckyId, this.rewardId??0);
+      this.excelDataService.updateLuckyDrawer(this.luckyId, this.rewardId??"0");
       this.isEnded = true;
-    }, Math.floor(Math.random() * 8000) + 20000);
+    }, Math.floor(Math.random() * this.randomTimeFrom * 1000) + this.randomTimeTo * 1000);
     }
     comback():void{
       this.location.back();

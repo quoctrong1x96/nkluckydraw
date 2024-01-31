@@ -22,6 +22,7 @@ h1 {
     color: rgb(0, 140, 255);
     outline: none;
     text-align: center;
+    font-weight: 800;
 }
 
 p {

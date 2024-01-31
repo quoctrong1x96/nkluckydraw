@@ -1,8 +1,8 @@
 // excel-data.service.ts
 import { Injectable } from '@angular/core';
 import { RewardService } from './list-reward.service';
-import { LuckyDrawer } from './luckyDrawer';
-import { Reward } from './reward';
+import { LuckyDrawer } from '../_models/luckyDrawer';
+import { Reward } from '../_models/reward';
 import { Observable } from 'rxjs';
 
 const STORAGE_KEY_DATA = 'excelData';
@@ -62,9 +62,9 @@ export class UploadDataService {
     return this.luckyDrawer;
   }
 
-  updateLuckyDrawer(luckier: number, rewardId: number): void {
+  updateLuckyDrawer(luckier: number, rewardId: string): void {
     console.log(luckier, rewardId);
-    this.service.getReward(rewardId).subscribe(reward => {
+    this.service.getById(rewardId).subscribe(reward => {
       let newLuckyDrawer: LuckyDrawer = { id: 0, reward: reward, name: '' };
       let dataExcel = this.excelData.find(excel => excel["STT"] == luckier );
       newLuckyDrawer.id = dataExcel["STT"];
