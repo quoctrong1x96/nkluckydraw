@@ -26,6 +26,7 @@
     ],
     "paths": {
       "@app/*": ["src/app/*"],
+      "@layout/*": ["src/layout/*"],
       "@environments/*": ["src/environments/*"]
     }
   },
